@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useRef, useState } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 const App = () => {
   const canvasRef = useRef(null);
@@ -64,18 +64,18 @@ const App = () => {
 
   return (
     <View>
-      <View>
-        <nav className="navbar">
-          <h1>Paint</h1>
-        </nav>
-        <div className="container">
-          <h3>Meu desenho</h3>
-          <div className="botoes">
-            <button onClick={selecionaVermelho} id="vermelho"></button>
-            <button onClick={selecionaVerde} id="verde"></button>
-            <button onClick={selecionaAzul} id="azul"></button>
-          </div>
+      <nav className="navbar">
+        <h1>Paint</h1>
+      </nav>
+      <div className="container">
+        <h3>Meu desenho</h3>
+        <div className="botoes">
+          <button onClick={selecionaVermelho} id="vermelho"></button>
+          <button onClick={selecionaVerde} id="verde"></button>
+          <button onClick={selecionaAzul} id="azul"></button>
         </div>
+      </div>
+      <View style={styles.container}>
         <canvas
           onMouseDown={startDrawing}
           onMouseUp={endDrawing}
@@ -86,5 +86,13 @@ const App = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default React.forwardRef(App);
